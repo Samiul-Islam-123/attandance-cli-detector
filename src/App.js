@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 function App() {
 
-  const socket = io('http://localhost:3001');
+  const socket = io('https://attandance-server-qmlt.onrender.com');
   const [isFaceDetectionEnabled, setIsFaceDetectionEnabled] = useState(false);
 
   const toggleFaceDetection = () => {
