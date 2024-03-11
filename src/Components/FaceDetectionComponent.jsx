@@ -8,7 +8,7 @@ const FaceDetectionComponent = () => {
 
   
   useEffect(() => {
-    socket = io('http://localhost:3001/');
+    socket = io('https://attandance-server-qmlt.onrender.com');
 
     return () => {
       socket.disconnect();
