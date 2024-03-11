@@ -6,6 +6,7 @@ import dingSound from './sound/sound.mp3';
 const FaceDetectionComponent = () => {
   let socket;
 
+  
   useEffect(() => {
     socket = io('http://localhost:3001/');
 
@@ -61,7 +62,7 @@ const FaceDetectionComponent = () => {
         video.addEventListener('play', async () => {
           document.body.append(canvas);
 
-          const displaySize = { width: video.videoWidth, height: video.videoHeight };
+          const displaySize = { width: 500, height: 500 };
           faceapi.matchDimensions(canvas, displaySize);
 
           const labeledFaceDescriptors = await loadLabeledImages(); // Load known faces
@@ -97,15 +98,16 @@ const FaceDetectionComponent = () => {
     };
 
     const loadLabeledImages = async () => {
-      const labels = ['samiul', 'jewell'];
+      const labels = ['samiul', 'jewell', "Jishnu", "aviroop", "Vidisha", "Joita", "Shovon", "aradhona", "Debashmita", "samridhhi", "sourish", "subhankar", "tushar"];
       return Promise.all(
         labels.map(async (label) => {
           const descriptions = [];
-          for (let i = 1; i <= 8; i++) {
+          for (let i = 1; i <= 2; i++) {
             const img = await faceapi.fetchImage(
-              `https://raw.githubusercontent.com/Samiul-Islam-123/images/master/${label}/${i}.jpg`
+              `https://raw.githubusercontent.com/Samiul-Islam-123/images/master/${label}/${i}.png`
             );
             const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+           //console.log(detections.descriptor)
             descriptions.push(detections.descriptor);
           }
 
